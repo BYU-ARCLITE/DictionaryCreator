@@ -1,6 +1,7 @@
 package edu.byu.arclite.dictionary
 
 import java.io.File
+import loaders.GiovanniDictionaryCreator
 
 /**
  * This provides easy ways of creating dictionaries from text files.

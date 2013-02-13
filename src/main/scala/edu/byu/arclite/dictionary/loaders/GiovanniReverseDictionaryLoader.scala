@@ -1,4 +1,4 @@
-package edu.byu.arclite.dictionary
+package edu.byu.arclite.dictionary.loaders
 
 import java.io.File
 import io.Source

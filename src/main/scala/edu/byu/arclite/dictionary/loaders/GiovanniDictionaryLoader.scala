@@ -1,10 +1,11 @@
-package edu.byu.arclite.dictionary
+package edu.byu.arclite.dictionary.loaders
 
 import java.io.File
 import org.apache.commons.lang3.text.StrTokenizer
 import collection.JavaConversions._
 import io.Source
 import java.text.Normalizer
+import edu.byu.arclite.dictionary.DictionaryLoader
 
 /**
  * This a dictionary loader for Giovanni's dictionary files saved as .cvs text files.

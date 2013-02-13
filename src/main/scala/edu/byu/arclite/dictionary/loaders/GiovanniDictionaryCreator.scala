@@ -1,7 +1,8 @@
-package edu.byu.arclite.dictionary
+package edu.byu.arclite.dictionary.loaders
 
 import java.io.File
 import java.util.Date
+import edu.byu.arclite.dictionary.Dictionary
 
 /**
  * This handles all the creation of dictionaries based on the dictionaries Giovanni supplied
@@ -14,28 +15,36 @@ object GiovanniDictionaryCreator {
   val giovanniDictionaries = List(
     "englishToFrench",
     "englishToGerman",
-    "englishToItalian"
+    "englishToItalian",
+    "englishToSpanish",
+    "englishToDutch"
   )
 
   // URIs of the text files
   val giovanniDictionaryTextFiles = Map(
     "englishToFrench" -> "src/main/resources/GEN-EF-pos.txt",
     "englishToGerman" -> "src/main/resources/GEN-EG-pos.txt",
-    "englishToItalian" -> "src/main/resources/GEN-EI-pos.txt"
+    "englishToItalian" -> "src/main/resources/GEN-EI-pos.txt",
+    "englishToSpanish" -> "src/main/resources/GEN-ES-pos.txt",
+    "englishToDutch" -> "src/main/resources/GEN-EDU-pos.txt"
   )
 
   // URIs of the finished dictionary files
   val giovanniDictionaryFiles = Map(
     "englishToFrench" -> "src/main/resources/en-fr.bin",
     "englishToGerman" -> "src/main/resources/en-de.bin",
-    "englishToItalian" -> "src/main/resources/en-it.bin"
+    "englishToItalian" -> "src/main/resources/en-it.bin",
+    "englishToSpanish" -> "src/main/resources/en-es.bin",
+    "englishToDutch" -> "src/main/resources/en-nl.bin"
   )
 
   // URIs of the reverse dictionary files
   val giovanniReverseDictionaryFiles = Map(
     "englishToFrench" -> "src/main/resources/fr-en.bin",
     "englishToGerman" -> "src/main/resources/de-en.bin",
-    "englishToItalian" -> "src/main/resources/it-en.bin"
+    "englishToItalian" -> "src/main/resources/it-en.bin",
+    "englishToSpanish" -> "src/main/resources/es-en.bin",
+    "englishToDutch" -> "src/main/resources/nl-en.bin"
   )
 
   /**
