@@ -7,6 +7,10 @@ import io.Source
 import java.text.Normalizer
 import edu.byu.arclite.dictionary.DictionaryLoader
 
+import java.nio.charset.CodingErrorAction
+import scala.io.Codec
+
+
 /**
  * This a dictionary loader for Giovanni's dictionary files saved as .cvs text files.
  * Date: 2/5/2013
@@ -14,6 +18,10 @@ import edu.byu.arclite.dictionary.DictionaryLoader
  * @param textFile The .csv file from which the dictionary will be loaded
  */
 class GiovanniDictionaryLoader(textFile: File) extends DictionaryLoader {
+
+implicit val codec = Codec("UTF-8")
+codec.onMalformedInput(CodingErrorAction.REPLACE)
+codec.onUnmappableCharacter(CodingErrorAction.REPLACE)
 
   // The dictionary text file
   protected val dictionaryFile = textFile
@@ -36,6 +44,7 @@ class GiovanniDictionaryLoader(textFile: File) extends DictionaryLoader {
     val contents = Source.fromFile(dictionaryFile).getLines()
     contents.map(str => {
       val parts = parseCsvLine(str)
+//println(parts)
       val entry = Normalizer.normalize(parts(1) + " (" + parts(2) + ")", Normalizer.Form.NFC)
       (Normalizer.normalize(parts(0), Normalizer.Form.NFC), entry)
     }).toList

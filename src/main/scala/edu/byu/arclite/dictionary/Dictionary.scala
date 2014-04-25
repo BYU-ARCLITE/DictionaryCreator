@@ -20,15 +20,15 @@ object Dictionary {
   def createDictionary(dictionaryLoader: DictionaryLoader): TrieMap[String, ListBuffer[String]] = {
     // Create the Trie
     val dictionary = new TrieMap[String, ListBuffer[String]]()
-
     // Load the dictionary
     for (entry <- dictionaryLoader.getEntries) {
-      if (dictionary contains entry._1)
+      if (dictionary contains entry._1) {
         dictionary(entry._1) append entry._2
-      else
+		}
+      else {
         dictionary += entry._1 -> ListBuffer(entry._2)
+		}
     }
-
     // Return the dictionary
     dictionary
   }

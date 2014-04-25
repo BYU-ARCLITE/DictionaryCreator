@@ -13,20 +13,31 @@ object GiovanniDictionaryCreator {
 
   // List of dictionaries to load
   val giovanniDictionaries = List(
+    "englishToPortuguese",
+    "englishToKorean",
+    "englishToJapanese",
     "englishToFrench",
     "englishToGerman",
     "englishToItalian",
     "englishToSpanish",
-    "englishToDutch"
+    "englishToDutch",
+	"englishToRussian",
+    "englishToChinese"
+    //"englishToRussian"
   )
 
   // URIs of the text files
   val giovanniDictionaryTextFiles = Map(
-    "englishToFrench" -> "src/main/resources/GEN-EF-pos.txt",
-    "englishToGerman" -> "src/main/resources/GEN-EG-pos.txt",
-    "englishToItalian" -> "src/main/resources/GEN-EI-pos.txt",
-    "englishToSpanish" -> "src/main/resources/GEN-ES-pos.txt",
-    "englishToDutch" -> "src/main/resources/GEN-EDU-pos.txt"
+    "englishToFrench" -> "src/main/resources/English-French.txt",
+    "englishToGerman" -> "src/main/resources/English-German.txt",
+    "englishToItalian" -> "src/main/resources/English-Italian.txt",
+    "englishToSpanish" -> "src/main/resources/English-Spanish.txt",
+    "englishToDutch" -> "src/main/resources/English-Dutch.txt",
+    "englishToRussian" -> "src/main/resources/English-Russian.txt",
+    "englishToPortuguese" -> "src/main/resources/English-Portuguese.txt",
+    "englishToChinese" -> "src/main/resources/English-Chinese(T).txt",
+    "englishToKorean" -> "src/main/resources/English-Korean.txt",
+    "englishToJapanese" -> "src/main/resources/English-Japanese.txt"
   )
 
   // URIs of the finished dictionary files
@@ -35,7 +46,12 @@ object GiovanniDictionaryCreator {
     "englishToGerman" -> "src/main/resources/en-de.bin",
     "englishToItalian" -> "src/main/resources/en-it.bin",
     "englishToSpanish" -> "src/main/resources/en-es.bin",
-    "englishToDutch" -> "src/main/resources/en-nl.bin"
+    "englishToDutch" -> "src/main/resources/en-nl.bin",
+    "englishToRussian" -> "src/main/resources/en-ru.bin",
+    "englishToPortuguese" -> "src/main/resources/en-pt.bin",
+    "englishToChinese" -> "src/main/resources/en-zh.bin",
+    "englishToKorean" -> "src/main/resources/en-ko.bin",
+    "englishToJapanese" -> "src/main/resources/en-ja.bin"
   )
 
   // URIs of the reverse dictionary files
@@ -44,7 +60,12 @@ object GiovanniDictionaryCreator {
     "englishToGerman" -> "src/main/resources/de-en.bin",
     "englishToItalian" -> "src/main/resources/it-en.bin",
     "englishToSpanish" -> "src/main/resources/es-en.bin",
-    "englishToDutch" -> "src/main/resources/nl-en.bin"
+    "englishToDutch" -> "src/main/resources/nl-en.bin",
+    "englishToRussian" -> "src/main/resources/ru-en.bin",
+    "englishToPortuguese" -> "src/main/resources/pt-en.bin",
+    "englishToChinese" -> "src/main/resources/zh-en.bin",
+    "englishToKorean" -> "src/main/resources/ko-en.bin",
+    "englishToJapanese" -> "src/main/resources/ja-en.bin"
   )
 
   /**
