@@ -44,8 +44,8 @@ codec.onUnmappableCharacter(CodingErrorAction.REPLACE)
     val contents = Source.fromFile(dictionaryFile).getLines()
     contents.map(str => {
       val parts = parseCsvLine(str)
-println(parts + "/n    " + parts(0) + "\n    " + Normalizer.normalize(parts(0), Normalizer.Form.NFC))
-      val entry = Normalizer.normalize(parts(1) + " (" + parts(2) + ")", Normalizer.Form.NFC)
+//println(parts + "/n    " + parts(0) + "\n    " + Normalizer.normalize(parts(0), Normalizer.Form.NFC))
+      val entry = Normalizer.normalize(parts(1) + " (" + parts(2).filterNot("[]()" contains _) + ")", Normalizer.Form.NFC)
       (Normalizer.normalize(parts(0), Normalizer.Form.NFC), entry)
     }).toList
   }

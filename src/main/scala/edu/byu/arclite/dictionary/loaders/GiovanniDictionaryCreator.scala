@@ -13,8 +13,9 @@ object GiovanniDictionaryCreator {
 
   // List of dictionaries to load
   val giovanniDictionaries = List(
-    "englishToPortuguese"
-    /*"englishToKorean",
+    "tester"
+    /*"englishToPortuguese"
+    "englishToKorean",
     "englishToJapanese",
     "englishToFrench",
     "englishToGerman",
@@ -28,6 +29,7 @@ object GiovanniDictionaryCreator {
 
   // URIs of the text files
   val giovanniDictionaryTextFiles = Map(
+	"tester" -> "src/main/resources/tester.txt",
     "englishToFrench" -> "src/main/resources/English-French.txt",
     "englishToGerman" -> "src/main/resources/English-German.txt",
     "englishToItalian" -> "src/main/resources/English-Italian.txt",
@@ -42,6 +44,7 @@ object GiovanniDictionaryCreator {
 
   // URIs of the finished dictionary files
   val giovanniDictionaryFiles = Map(
+	"tester" -> "src/main/resources/aa-zz.bin",
     "englishToFrench" -> "src/main/resources/en-fr.bin",
     "englishToGerman" -> "src/main/resources/en-de.bin",
     "englishToItalian" -> "src/main/resources/en-it.bin",
@@ -56,6 +59,7 @@ object GiovanniDictionaryCreator {
 
   // URIs of the reverse dictionary files
   val giovanniReverseDictionaryFiles = Map(
+	"tester" -> "src/main/resources/zz-aa.bin",
     "englishToFrench" -> "src/main/resources/fr-en.bin",
     "englishToGerman" -> "src/main/resources/de-en.bin",
     "englishToItalian" -> "src/main/resources/it-en.bin",
