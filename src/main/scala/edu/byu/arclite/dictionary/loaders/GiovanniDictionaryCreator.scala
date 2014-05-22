@@ -13,8 +13,8 @@ object GiovanniDictionaryCreator {
 
   // List of dictionaries to load
   val giovanniDictionaries = List(
-    "englishToPortuguese",
-    "englishToKorean",
+    "englishToPortuguese"
+    /*"englishToKorean",
     "englishToJapanese",
     "englishToFrench",
     "englishToGerman",
@@ -22,7 +22,7 @@ object GiovanniDictionaryCreator {
     "englishToSpanish",
     "englishToDutch",
 	"englishToRussian",
-    "englishToChinese"
+    "englishToChinese"*/
     //"englishToRussian"
   )
 
