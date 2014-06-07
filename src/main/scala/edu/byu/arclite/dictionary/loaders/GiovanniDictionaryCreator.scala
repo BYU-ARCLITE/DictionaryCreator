@@ -13,18 +13,20 @@ object GiovanniDictionaryCreator {
 
   // List of dictionaries to load
   val giovanniDictionaries = List(
-    "tester"
-    /*"englishToPortuguese"
+    "englishToDutch",
+    "englishToGerman"
+    /*"englishToPortuguese",
     "englishToKorean",
     "englishToJapanese",
     "englishToFrench",
-    "englishToGerman",
+    "englishToGerman", //The German and Dutch dictionaries haven't been redone
     "englishToItalian",
     "englishToSpanish",
     "englishToDutch",
-	"englishToRussian",
-    "englishToChinese"*/
-    //"englishToRussian"
+    "englishToRussian",
+    "englishToChinese",
+    "englishToSwedish",
+    "englishToHebrew"*/
   )
 
   // URIs of the text files
@@ -39,7 +41,9 @@ object GiovanniDictionaryCreator {
     "englishToPortuguese" -> "src/main/resources/English-Portuguese.txt",
     "englishToChinese" -> "src/main/resources/English-Chinese(T).txt",
     "englishToKorean" -> "src/main/resources/English-Korean.txt",
-    "englishToJapanese" -> "src/main/resources/English-Japanese.txt"
+    "englishToJapanese" -> "src/main/resources/English-Japanese.txt",
+    "englishToSwedish" -> "src/main/resources/English-Swedish.txt",
+    "englishToHebrew" -> "src/main/resources/English-Hebrew.txt"
   )
 
   // URIs of the finished dictionary files
@@ -54,7 +58,9 @@ object GiovanniDictionaryCreator {
     "englishToPortuguese" -> "src/main/resources/en-pt.bin",
     "englishToChinese" -> "src/main/resources/en-zh.bin",
     "englishToKorean" -> "src/main/resources/en-ko.bin",
-    "englishToJapanese" -> "src/main/resources/en-ja.bin"
+    "englishToJapanese" -> "src/main/resources/en-ja.bin",
+    "englishToSwedish" -> "src/main/resources/en-sv.bin",
+    "englishToHebrew" -> "src/main/resources/en-he.bin"
   )
 
   // URIs of the reverse dictionary files
@@ -69,7 +75,9 @@ object GiovanniDictionaryCreator {
     "englishToPortuguese" -> "src/main/resources/pt-en.bin",
     "englishToChinese" -> "src/main/resources/zh-en.bin",
     "englishToKorean" -> "src/main/resources/ko-en.bin",
-    "englishToJapanese" -> "src/main/resources/ja-en.bin"
+    "englishToJapanese" -> "src/main/resources/ja-en.bin",
+    "englishToSwedish" -> "src/main/resources/sv-en.bin",
+    "englishToHebrew" -> "src/main/resources/he-en.bin"
   )
 
   /**

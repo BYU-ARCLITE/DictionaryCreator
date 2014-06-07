@@ -17,12 +17,15 @@ class GiovanniReverseDictionaryLoader(textFile: File) extends GiovanniDictionary
    * This loads the dictionary text file, parses each line, and creates a dictionary entry from it, reversing the entry
    * order and omitting the part of speech.
    * @return
+   * edit: Part of speech is included
    */
   override def getEntries: List[(String, String)] = {
     val contents = Source.fromFile(dictionaryFile).getLines()
     contents.map(str => {
       val parts = parseCsvLine(str)
-      (Normalizer.normalize(parts(1), Normalizer.Form.NFC), Normalizer.normalize(parts(0), Normalizer.Form.NFC))
+      val pos = if(parts(2).filterNot("[]()" contains _) != "") {" (" + parts(2).filterNot("[]()" contains _) + ")"} else ""
+      val entry = Normalizer.normalize(parts(0) + pos, Normalizer.Form.NFC)
+      (Normalizer.normalize(parts(1), Normalizer.Form.NFC), entry)
     }).toList
   }
 
