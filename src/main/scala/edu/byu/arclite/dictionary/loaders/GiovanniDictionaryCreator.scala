@@ -13,9 +13,11 @@ object GiovanniDictionaryCreator {
 
   // List of dictionaries to load
   val giovanniDictionaries = List(
-    "englishToDutch",
+    "englishToEgyptian",
+    "englishToLevantine"
+    /*"englishToDutch",
     "englishToGerman"
-    /*"englishToPortuguese",
+    "englishToPortuguese",
     "englishToKorean",
     "englishToJapanese",
     "englishToFrench",
@@ -31,7 +33,9 @@ object GiovanniDictionaryCreator {
 
   // URIs of the text files
   val giovanniDictionaryTextFiles = Map(
-	"tester" -> "src/main/resources/tester.txt",
+    "englishToEgyptian" -> "src/main/resources/English-Egyptian.txt",
+    "englishToLevantine" -> "src/main/resources/English-Levantine.txt"
+	/*"tester" -> "src/main/resources/tester.txt",
     "englishToFrench" -> "src/main/resources/English-French.txt",
     "englishToGerman" -> "src/main/resources/English-German.txt",
     "englishToItalian" -> "src/main/resources/English-Italian.txt",
@@ -43,12 +47,15 @@ object GiovanniDictionaryCreator {
     "englishToKorean" -> "src/main/resources/English-Korean.txt",
     "englishToJapanese" -> "src/main/resources/English-Japanese.txt",
     "englishToSwedish" -> "src/main/resources/English-Swedish.txt",
-    "englishToHebrew" -> "src/main/resources/English-Hebrew.txt"
+    "englishToHebrew" -> "src/main/resources/English-Hebrew.txt"*/
   )
 
   // URIs of the finished dictionary files
   val giovanniDictionaryFiles = Map(
-	"tester" -> "src/main/resources/aa-zz.bin",
+    "englishToEgyptian" -> "src/main/resources/en-egy.bin",
+    "englishToLevantine" -> "src/main/resources/en-lev.bin"
+  /*
+1	"tester" -> "src/main/resources/aa-zz.bin",
     "englishToFrench" -> "src/main/resources/en-fr.bin",
     "englishToGerman" -> "src/main/resources/en-de.bin",
     "englishToItalian" -> "src/main/resources/en-it.bin",
@@ -60,11 +67,14 @@ object GiovanniDictionaryCreator {
     "englishToKorean" -> "src/main/resources/en-ko.bin",
     "englishToJapanese" -> "src/main/resources/en-ja.bin",
     "englishToSwedish" -> "src/main/resources/en-sv.bin",
-    "englishToHebrew" -> "src/main/resources/en-he.bin"
+    "englishToHebrew" -> "src/main/resources/en-he.bin"*/
   )
 
   // URIs of the reverse dictionary files
   val giovanniReverseDictionaryFiles = Map(
+    "englishToEgyptian" -> "src/main/resources/egy-en.bin",
+    "englishToLevantine" -> "src/main/resources/lev-en.bin"
+  /*
 	"tester" -> "src/main/resources/zz-aa.bin",
     "englishToFrench" -> "src/main/resources/fr-en.bin",
     "englishToGerman" -> "src/main/resources/de-en.bin",
@@ -78,6 +88,7 @@ object GiovanniDictionaryCreator {
     "englishToJapanese" -> "src/main/resources/ja-en.bin",
     "englishToSwedish" -> "src/main/resources/sv-en.bin",
     "englishToHebrew" -> "src/main/resources/he-en.bin"
+  */
   )
 
   /**
