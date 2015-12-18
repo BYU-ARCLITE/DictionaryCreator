@@ -10,21 +10,18 @@ import edu.byu.arclite.dictionary.DictionaryLoader
 import java.nio.charset.CodingErrorAction
 import scala.io.Codec
 
-
 /**
- * This a dictionary loader for Giovanni's dictionary files saved as .csv text files.
- * Date: 2/5/2013
- * @author Josh Monson
- * @param textFile The .csv file from which the dictionary will be loaded
+ * The dictionary loader for the ICA dictionary files that are saved as .csv files
+ * The file is expected to have the following fields:
+ * Root,Unvocalized,Vocalized,SATTS,EgyFreq,EgyRelFreq,MSA,POS,Gloss
  */
-class GiovanniDictionaryLoader(textFile: File) extends DictionaryLoader {
-
+class ICADictionaryLoader(csvFile: File) extends DictionaryLoader {
 implicit val codec = Codec("UTF-8")
 codec.onMalformedInput(CodingErrorAction.REPLACE)
 codec.onUnmappableCharacter(CodingErrorAction.REPLACE)
 
   // The dictionary text file
-  protected val dictionaryFile = textFile
+  protected val dictionaryFile = csvFile
 
   // A CSV tokenizer for tokenizing the lines of the text files
   val tokenizer = StrTokenizer.getCSVInstance
@@ -36,6 +33,9 @@ codec.onUnmappableCharacter(CodingErrorAction.REPLACE)
    */
   def parseCsvLine(line: String): List[String] = tokenizer.reset(line).getTokenList.toList
 
+  // To wrap the part of speech in parenthesis
+  val wrap = (x:String) => "("+x+")"
+
   /**
    * This loads the dictionary text file, parses each line, and creates a dictionary entry from it
    * @return
@@ -43,10 +43,8 @@ codec.onUnmappableCharacter(CodingErrorAction.REPLACE)
   override def getEntries: List[(String, String)] = {
     val contents = Source.fromFile(dictionaryFile).getLines()
     contents.map(str => {
-      val parts = parseCsvLine(str)
-      //println(parts) // Use for debugging
-	    val pos = if(parts(2).filterNot("[]()" contains _) != "") {" (" + parts(2).filterNot("[]()" contains _) + ")"} else "" 
-      val entry = Normalizer.normalize(parts(1) + pos, Normalizer.Form.NFC)
+      val parts: List[String] = parseCsvLine(str)
+      val entry = Normalizer.normalize(parts(8) + wrap(parts(7)), Normalizer.Form.NFC)
       (Normalizer.normalize(parts(0), Normalizer.Form.NFC), entry)
     }).toList
   }

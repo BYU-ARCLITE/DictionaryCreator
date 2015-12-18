@@ -2,6 +2,7 @@ package edu.byu.arclite.dictionary
 
 import java.io.File
 import loaders.GiovanniDictionaryCreator
+import loaders.ICADictionaryCreator
 
 /**
  * This provides easy ways of creating dictionaries from text files.
@@ -15,6 +16,7 @@ object DictionaryCreator {
     println("Usage: test   [dictionarySet] [dictionary] [entries ...]\n")
     println("The following are the available dictionary sets:")
     println("   giovanni  -- The dictionaries provided by Giovanni")
+    println("   ICA       -- The dictionaries provided by Tim Buckwalter from the ICA")
   }
 
   def main(args: Array[String]) {
@@ -30,6 +32,9 @@ object DictionaryCreator {
         // Check for giovanni dictionaries
         if (args(1) == "giovanni")
           GiovanniDictionaryCreator.createDictionaries()
+        // Check for ICA dictionaries
+        if (args(1).toUpperCase == "ICA")
+          ICADictionaryCreator.createDictionaries()
 
       } else if (args(0) == "test") {
 
