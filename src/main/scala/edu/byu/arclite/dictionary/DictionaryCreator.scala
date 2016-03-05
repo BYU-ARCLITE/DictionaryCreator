@@ -37,7 +37,8 @@ object DictionaryCreator {
           ICADictionaryCreator.createDictionaries()
 
       } else if (args(0) == "test") {
-
+        if (args(1) == "ara")
+          ICADictionaryCreator.tester()
         // Check for giovanni dictionaries
         if (args(1) == "giovanni")
           GiovanniDictionaryCreator.test(args(2), args.slice(3, args.size).toList)

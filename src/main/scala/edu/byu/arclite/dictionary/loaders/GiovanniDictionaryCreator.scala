@@ -11,7 +11,7 @@ import edu.byu.arclite.dictionary.Dictionary
  */
 object GiovanniDictionaryCreator {
 
-  val dictionaryDirectoryName = "src/main/resources"
+  val dictionaryDirectoryName = "src/main/resources/"
 
   // List of dictionaries to load
   val giovanniDictionaries = List(
@@ -110,9 +110,9 @@ object GiovanniDictionaryCreator {
    */
   def createDictionary(dictionaryName: String) {
     // Keep track of time
+    println(dictionaryName)
     val start = new Date().getTime
-
-    val compiledName = dictionaryName.split("-").map { lang =>
+    val compiledName = dictionaryName.split("\\\\").last.split("\\.").head.split("-").map { lang =>
       if (nameTo3LetterCode.contains(lang)) {
         Some(nameTo3LetterCode(lang))
       }
@@ -122,12 +122,12 @@ object GiovanniDictionaryCreator {
     }
 
     // Create the dictionary loader
-    val dictionaryTextFile = new File(giovanniDictionaryTextFiles(dictionaryName))
+    val dictionaryTextFile = new File(dictionaryName)
     val loader = new GiovanniDictionaryLoader(dictionaryTextFile)
 
     // Create the dictionary and save it to file
     val dictionary = Dictionary.createDictionary(loader)
-    val dictionaryFile = new File(giovanniDictionaryFiles(dictionaryName))
+    val dictionaryFile = new File(s"$dictionaryDirectoryName${compiledName(0).getOrElse("ERROR")}-${compiledName(1).getOrElse("ERROR")}.bin")
     Dictionary.saveToFile(dictionary, dictionaryFile)
 
     // How long did it take?

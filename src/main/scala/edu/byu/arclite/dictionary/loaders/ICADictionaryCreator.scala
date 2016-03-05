@@ -40,6 +40,11 @@ object ICADictionaryCreator {
     println("Dictionary \"" + dictionaryName + "\" created in " + (end - start) + " ms.")
   }
 
+  def tester(): Unit = {
+    val dict = Dictionary.loadFromFile(new File("src/main/tests/apc-eng.bin"))
+    println("Asdfasdf")
+  }
+
   /**
    * This creates all the dictionaries
    */
