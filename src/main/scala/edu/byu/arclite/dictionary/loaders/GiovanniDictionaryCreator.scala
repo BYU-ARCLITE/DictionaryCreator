@@ -110,8 +110,8 @@ object GiovanniDictionaryCreator {
    */
   def createDictionary(dictionaryName: String) {
     // Keep track of time
-    println(dictionaryName)
     val start = new Date().getTime
+
     val compiledName = dictionaryName.split("\\\\").last.split("\\.").head.split("-").map { lang =>
       if (nameTo3LetterCode.contains(lang)) {
         Some(nameTo3LetterCode(lang))
@@ -143,13 +143,22 @@ object GiovanniDictionaryCreator {
     // Keep track of time
     val start = new Date().getTime
 
+    val compiledName = dictionaryName.split("\\\\").last.split("\\.").head.split("-").map { lang =>
+      if (nameTo3LetterCode.contains(lang)) {
+        Some(nameTo3LetterCode(lang))
+      }
+      else {
+        None
+      }
+    }
+
     // Create the dictionary loader
-    val dictionaryTextFile = new File(giovanniDictionaryTextFiles(dictionaryName))
+    val dictionaryTextFile = new File(dictionaryName)
     val loader = new GiovanniReverseDictionaryLoader(dictionaryTextFile)
 
     // Create the dictionary and save it to file
     val dictionary = Dictionary.createDictionary(loader)
-    val dictionaryFile = new File(giovanniReverseDictionaryFiles(dictionaryName))
+    val dictionaryFile = new File(s"$dictionaryDirectoryName${compiledName(1).getOrElse("ERROR")}-${compiledName(0).getOrElse("ERROR")}.bin")
     Dictionary.saveToFile(dictionary, dictionaryFile)
 
     // How long did it take?
@@ -165,7 +174,7 @@ object GiovanniDictionaryCreator {
     val dictionaries: List[String] = new File(dictionaryDirectoryName).listFiles.toList.map( file => file.getCanonicalPath )
     for (dictionaryName <- dictionaries) {
       createDictionary(dictionaryName)
-      //createReverseDictionary(dictionaryName)
+      createReverseDictionary(dictionaryName)
     }
   }
 
