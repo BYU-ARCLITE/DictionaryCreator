@@ -11,12 +11,14 @@ import edu.byu.arclite.dictionary.Dictionary
  */
 object GiovanniDictionaryCreator {
 
+  val dictionaryDirectoryName = "src/main/resources"
+
   // List of dictionaries to load
   val giovanniDictionaries = List(
     "englishToEgyptian",
-    "englishToLevantine"
-    /*"englishToDutch",
-    "englishToGerman"
+    "englishToLevantine",
+    "englishToDutch",
+    "englishToGerman",
     "englishToPortuguese",
     "englishToKorean",
     "englishToJapanese",
@@ -28,14 +30,14 @@ object GiovanniDictionaryCreator {
     "englishToRussian",
     "englishToChinese",
     "englishToSwedish",
-    "englishToHebrew"*/
+    "englishToHebrew"
   )
 
   // URIs of the text files
   val giovanniDictionaryTextFiles = Map(
     "englishToEgyptian" -> "src/main/resources/English-Egyptian.txt",
-    "englishToLevantine" -> "src/main/resources/English-Levantine.txt"
-	/*"tester" -> "src/main/resources/tester.txt",
+    "englishToLevantine" -> "src/main/resources/English-Levantine.txt",
+    "tester" -> "src/main/resources/tester.txt",
     "englishToFrench" -> "src/main/resources/English-French.txt",
     "englishToGerman" -> "src/main/resources/English-German.txt",
     "englishToItalian" -> "src/main/resources/English-Italian.txt",
@@ -47,15 +49,13 @@ object GiovanniDictionaryCreator {
     "englishToKorean" -> "src/main/resources/English-Korean.txt",
     "englishToJapanese" -> "src/main/resources/English-Japanese.txt",
     "englishToSwedish" -> "src/main/resources/English-Swedish.txt",
-    "englishToHebrew" -> "src/main/resources/English-Hebrew.txt"*/
+    "englishToHebrew" -> "src/main/resources/English-Hebrew.txt"
   )
 
   // URIs of the finished dictionary files
   val giovanniDictionaryFiles = Map(
     "englishToEgyptian" -> "src/main/resources/en-egy.bin",
-    "englishToLevantine" -> "src/main/resources/en-lev.bin"
-  /*
-1	"tester" -> "src/main/resources/aa-zz.bin",
+    "englishToLevantine" -> "src/main/resources/en-lev.bin",
     "englishToFrench" -> "src/main/resources/en-fr.bin",
     "englishToGerman" -> "src/main/resources/en-de.bin",
     "englishToItalian" -> "src/main/resources/en-it.bin",
@@ -67,15 +67,13 @@ object GiovanniDictionaryCreator {
     "englishToKorean" -> "src/main/resources/en-ko.bin",
     "englishToJapanese" -> "src/main/resources/en-ja.bin",
     "englishToSwedish" -> "src/main/resources/en-sv.bin",
-    "englishToHebrew" -> "src/main/resources/en-he.bin"*/
+    "englishToHebrew" -> "src/main/resources/en-he.bin"
   )
 
   // URIs of the reverse dictionary files
   val giovanniReverseDictionaryFiles = Map(
     "englishToEgyptian" -> "src/main/resources/egy-en.bin",
-    "englishToLevantine" -> "src/main/resources/lev-en.bin"
-  /*
-	"tester" -> "src/main/resources/zz-aa.bin",
+    "englishToLevantine" -> "src/main/resources/lev-en.bin",
     "englishToFrench" -> "src/main/resources/fr-en.bin",
     "englishToGerman" -> "src/main/resources/de-en.bin",
     "englishToItalian" -> "src/main/resources/it-en.bin",
@@ -88,7 +86,22 @@ object GiovanniDictionaryCreator {
     "englishToJapanese" -> "src/main/resources/ja-en.bin",
     "englishToSwedish" -> "src/main/resources/sv-en.bin",
     "englishToHebrew" -> "src/main/resources/he-en.bin"
-  */
+  )
+
+  val nameTo3LetterCode = Map(
+    "English" -> "eng",
+    "Hebrew" -> "heb",
+    "Portuguese" -> "por",
+    "French" -> "fra",
+    "Dutch" -> "nld",
+    "Chinese" -> "zho",
+    "Italian" -> "ita",
+    "Russian" -> "rus",
+    "German" -> "deu",
+    "Korean" -> "kor",
+    "Swedish" -> "swe",
+    "Japanese" -> "jpn",
+    "Spanish" -> "spa"
   )
 
   /**
@@ -98,6 +111,15 @@ object GiovanniDictionaryCreator {
   def createDictionary(dictionaryName: String) {
     // Keep track of time
     val start = new Date().getTime
+
+    val compiledName = dictionaryName.split("-").map { lang =>
+      if (nameTo3LetterCode.contains(lang)) {
+        Some(nameTo3LetterCode(lang))
+      }
+      else {
+        None
+      }
+    }
 
     // Create the dictionary loader
     val dictionaryTextFile = new File(giovanniDictionaryTextFiles(dictionaryName))
@@ -140,9 +162,10 @@ object GiovanniDictionaryCreator {
    */
   def createDictionaries() {
     println("Loading Giovanni's dictionaries...")
-    for (dictionaryName <- giovanniDictionaries) {
+    val dictionaries: List[String] = new File(dictionaryDirectoryName).listFiles.toList.map( file => file.getCanonicalPath )
+    for (dictionaryName <- dictionaries) {
       createDictionary(dictionaryName)
-      createReverseDictionary(dictionaryName)
+      //createReverseDictionary(dictionaryName)
     }
   }
 
