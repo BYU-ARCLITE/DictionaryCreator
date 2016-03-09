@@ -105,9 +105,10 @@ object GiovanniDictionaryCreator {
   )
 
   /**
-   * This creates a dictionary based on the name
-   * @param dictionaryName The name of the dictionary to create
-   */
+    * This creates a dictionary based on the name
+    *
+    * @param dictionaryName The name of the dictionary to create
+    */
   def createDictionary(dictionaryName: String) {
     // Keep track of time
     val start = new Date().getTime
@@ -136,9 +137,10 @@ object GiovanniDictionaryCreator {
   }
 
   /**
-   * This creates a reverse dictionary based on the name
-   * @param dictionaryName The name of the dictionary to create
-   */
+    * This creates a reverse dictionary based on the name
+    *
+    * @param dictionaryName The name of the dictionary to create
+    */
   def createReverseDictionary(dictionaryName: String) {
     // Keep track of time
     val start = new Date().getTime
@@ -167,8 +169,8 @@ object GiovanniDictionaryCreator {
   }
 
   /**
-   * This creates all the dictionaries
-   */
+    * This creates all the dictionaries
+    */
   def createDictionaries() {
     println("Loading Giovanni's dictionaries...")
     val dictionaries: List[String] = new File(dictionaryDirectoryName).listFiles.toList.map( file => file.getCanonicalPath )
@@ -178,13 +180,29 @@ object GiovanniDictionaryCreator {
     }
   }
 
+  /**
+    * Method to deserialize a dictionary and store it as a txt file
+    * @param dictionaryName
+    */
+  def saveTextDictionary(dictionaryName: String) = {
+    val start = new Date().getTime
+    val textFileName = dictionaryName.split(".bin")(0)
+    println(pathPrefix+dictionaryName)
+
+    val dictionary = Dictionary.loadFromFile(new File(pathPrefix+dictionaryName))
+    Dictionary.saveAsPlainText(dictionary, new File(pathPrefix+textFileName+".txt"))
+
+    val end = new Date().getTime
+    println(s"Load Dictionary $dictionaryName loaded in ${end-start} ms.")
+  }
+
   def test(dictionaryName: String, keys: List[String]) {
 
     val dictionaryFileName =
-      if (dictionaryName.substring(0,2) == "R_")
-        giovanniReverseDictionaryFiles(dictionaryName.substring(2))
-      else
-        giovanniDictionaryFiles(dictionaryName)
+    if (dictionaryName.substring(0,2) == "R_")
+    giovanniReverseDictionaryFiles(dictionaryName.substring(2))
+    else
+    giovanniDictionaryFiles(dictionaryName)
 
     val dictionaryFile = new File(dictionaryFileName)
     val dictionary = Dictionary.loadFromFile(dictionaryFile)

@@ -41,6 +41,9 @@ object DictionaryCreator {
         if (args(1) == "giovanni")
           GiovanniDictionaryCreator.test(args(2), args.slice(3, args.size).toList)
 
+      } else if (args(0) == "load") {
+        if (args(1).contains(".bin"))
+          GiovanniDictionaryCreator.saveTextDictionary(args(1))
       } else
         printUsage()
     }

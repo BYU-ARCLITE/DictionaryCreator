@@ -24,11 +24,11 @@ object Dictionary {
     for (entry <- dictionaryLoader.getEntries) {
       if (dictionary contains entry._1) {
         dictionary(entry._1) append entry._2
-		}
-      else {
+  		}
+      else
         dictionary += entry._1 -> ListBuffer(entry._2)
 		}
-    }
+
     // Return the dictionary
     dictionary
   }
@@ -47,8 +47,20 @@ object Dictionary {
    * @param dictionary The dictionary to save
    * @param file The file the dictionary will be written to
    */
-  def saveToFile(dictionary: TrieMap[String, ListBuffer[String]], file: File) {
+  def saveToFile(dictionary: TrieMap[String, ListBuffer[String]], file: File) = {
     ObjectIO.writeObjectToFile(dictionary, file)
+  }
+
+  /**
+    * Saves a dictionary as a string to a text file
+    * @param dictionary
+    * @param file
+    */
+  def saveAsPlainText(dictionary: TrieMap[String, ListBuffer[String]], file: File) = {
+    val objectAsString = dictionary.toString
+    println("Hello this is a test")
+    println(objectAsString)
+    ObjectIO.writeObjectToFile(objectAsString, file)
   }
 
 }
